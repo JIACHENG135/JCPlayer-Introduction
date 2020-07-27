@@ -100,7 +100,7 @@ function NavBar(props) {
                 onClick={handleMobileDrawerOpen}
                 aria-label="Open Navigation"
               >
-                <MenuIcon color="primary" />
+                <MenuIcon color="#29b6f6" />
               </IconButton>
             </Hidden>
             <Hidden smDown>
