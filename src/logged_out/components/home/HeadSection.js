@@ -6,15 +6,23 @@ import {
   Typography,
   Card,
   Button,
-  Hidden,
+  // Hidden,
   Box,
   withStyles,
   withWidth,
   isWidthUp,
   IconButton,
 } from "@material-ui/core";
-import headerImage from "../../dummy_data/images/headerImage.jpg";
+import { Carousel } from "element-react";
+// import headerImage from "../../dummy_data/images/headerImage.jpg";
 import WaveBorder from "../../../shared/components/WaveBorder";
+import 'element-theme-default';
+import './carousel.css';
+import {
+  about1,about2,details1,details2,search1,search2
+} from '../../dummy_data/images/';
+
+
 
 const styles = theme => ({
   palette: {
@@ -213,15 +221,27 @@ function HeadSection(props) {
                         </div>
                         </Box>
                     </Grid>
-                    <Hidden smDown>
+
                       <Grid item md={6}>
-                        <img
-                          src={headerImage}
-                          className={classes.image}
-                          alt="header example"
-                        />
+
+                        <div className="demo-4 medium">
+                          <Carousel interval="4000" type="card" height="200px">
+                            {
+                              [about1,about2,search1,search2,details1,details2].map((item, index) => {
+                                return (
+                                  <Carousel.Item key={index}>
+                                    <img
+                                      src={item}
+                                      className={classes.image}
+                                      alt="header example"
+                                    />
+                                  </Carousel.Item>
+                                )
+                              })
+                            }
+                          </Carousel>
+                        </div>
                       </Grid>
-                    </Hidden>
                   </Box>
                 </div>
               </Card>
