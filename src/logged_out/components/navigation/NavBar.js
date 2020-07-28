@@ -52,21 +52,21 @@ function NavBar(props) {
   const menuItems = [
     {
       link: "/",
-      name: "Home",
+      name: "主页",
       icon: <HomeIcon className="text-white" />
     },
     {
       link: "/blog",
-      name: "Blog",
+      name: "博客",
       icon: <BookIcon className="text-white" />
     },
     {
-      name: "Register",
+      name: "注册",
       onClick: openRegisterDialog,
       icon: <HowToRegIcon className="text-white" />
     },
     {
-      name: "Login",
+      name: "登陆",
       onClick: openLoginDialog,
       icon: <LockOpenIcon className="text-white" />
     }

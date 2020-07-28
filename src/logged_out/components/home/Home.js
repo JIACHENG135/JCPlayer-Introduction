@@ -34,7 +34,7 @@ function Home(props) {
         <HeadSection />
       
         <FeatureSection />
-        <PricingSection />
+        {/* <PricingSection /> */}
       </ThemeProvider>
     </Fragment>
   );

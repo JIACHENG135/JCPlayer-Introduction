@@ -101,7 +101,7 @@ const socialIcons = [
       </svg>
     ),
     label: "Github",
-    href: "https://github.com/dunky11/react-saas-template"
+    href: "https://github.com/JIACHENG135"
   },
   {
     icon: (
@@ -117,7 +117,7 @@ const socialIcons = [
       </svg>
     ),
     label: "Facebook",
-    href: "https://facebook.com"
+    href: "https://www.facebook.com/jason.leo.315080"
   },
   {
     icon: (
@@ -149,7 +149,7 @@ const socialIcons = [
       </svg>
     ),
     label: "Twitter",
-    href: "https://www.twitter.com/"
+    href: "https://twitter.com/JasonLe06916196"
   }
 ];
 
@@ -171,7 +171,7 @@ function Footer(props) {
                   <TextField
                     variant="outlined"
                     multiline
-                    placeholder="Get in touch with us"
+                    placeholder="与作者取得联系"
                     inputProps={{ "aria-label": "Get in Touch" }}
                     InputProps={{
                       className: classes.whiteBg
@@ -186,7 +186,7 @@ function Footer(props) {
                   variant="outlined"
                   type="submit"
                 >
-                  Send Message
+                  发送消息
                 </ColoredButton>
               </Box>
             </form>
@@ -223,11 +223,10 @@ function Footer(props) {
           </Hidden>
           <Grid item xs={12} md={6} lg={4}>
             <Typography variant="h6" paragraph className="text-white">
-              About the Company
+              关于作者
             </Typography>
             <Typography style={{ color: "#8f9296" }} paragraph>
-              Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce
-              euismod convallis velit, eu auctor lacus vehicula sit amet.
+              FastAPI, MIT 6.824, Electron and React
             </Typography>
             <Box display="flex">
               {socialIcons.map((socialIcon, index) => (

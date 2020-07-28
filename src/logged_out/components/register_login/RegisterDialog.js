@@ -70,7 +70,7 @@ function RegisterDialog(props) {
       loading={isLoading}
       onClose={onClose}
       open
-      headline="Register"
+      headline="注册"
       onFormSubmit={(e) => {
         e.preventDefault();
         register();
@@ -85,7 +85,7 @@ function RegisterDialog(props) {
             required
             fullWidth
             error={status === "invalidEmail"}
-            label="Email Address"
+            label="邮件"
             autoFocus
             autoComplete="off"
             type="email"
@@ -104,7 +104,7 @@ function RegisterDialog(props) {
             error={
               status === "passwordTooShort" || status === "passwordsDontMatch"
             }
-            label="Password"
+            label="密码"
             inputRef={registerPassword}
             autoComplete="off"
             onChange={() => {
@@ -136,7 +136,7 @@ function RegisterDialog(props) {
             error={
               status === "passwordTooShort" || status === "passwordsDontMatch"
             }
-            label="Repeat Password"
+            label="重复密码"
             inputRef={registerPasswordRepeat}
             autoComplete="off"
             onChange={() => {
@@ -172,7 +172,7 @@ function RegisterDialog(props) {
             }
             label={
               <Typography variant="body1">
-                I agree to the
+                我同意
                 <span
                   className={classes.link}
                   onClick={isLoading ? null : openTermsDialog}
@@ -189,7 +189,7 @@ function RegisterDialog(props) {
                   }}
                 >
                   {" "}
-                  terms of service
+                  用户使用协议
                 </span>
               </Typography>
             }
@@ -202,18 +202,16 @@ function RegisterDialog(props) {
                 marginTop: theme.spacing(-1),
               }}
             >
-              In order to create an account, you have to accept our terms of
-              service.
+              你必须同意用户使用协议,才能成功注册
             </FormHelperText>
           )}
           {status === "accountCreated" ? (
             <HighlightedInformation>
-              We have created your account. Please click on the link in the
-              email we have sent to you before logging in.
+              已成功创建账户,登陆前请点击我们发送给你的邮件里的链接以确认注册
             </HighlightedInformation>
           ) : (
             <HighlightedInformation>
-              Registration is disabled until we go live.
+              注册功能正在开发中,敬请期待
             </HighlightedInformation>
           )}
         </Fragment>
@@ -227,7 +225,7 @@ function RegisterDialog(props) {
           color="secondary"
           disabled={isLoading}
         >
-          Register
+          注册
           {isLoading && <ButtonCircularProgress />}
         </Button>
       }
