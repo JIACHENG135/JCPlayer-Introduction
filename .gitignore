@@ -111,3 +111,6 @@ build/
 #lockfiles
 yarn.lock
 
+# vscode mac
+.DS_Store
+
