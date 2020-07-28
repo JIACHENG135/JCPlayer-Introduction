@@ -172,7 +172,7 @@ function HeadSection(props) {
                         </div>
                         <div>
                           <Grid container  spacing={3} justify="space-evenly" >
-                            <Grid xs={6}  >
+                            <Grid item xs={6}  >
                               <Button
                                 variant="contained"
                                 color="secondary"
@@ -194,7 +194,7 @@ function HeadSection(props) {
                                 Github 下载
                               </Button>
                             </Grid>
-                            <Grid xs={6} >
+                            <Grid item xs={6} >
                               <Button
                                 variant="contained"
                                 color="secondary"

@@ -81,7 +81,7 @@ function LoginDialog(props) {
           login();
         }}
         hideBackdrop
-        headline="Login"
+        headline="登陆"
         content={
           <Fragment>
             <TextField
@@ -90,7 +90,7 @@ function LoginDialog(props) {
               error={status === "invalidEmail"}
               required
               fullWidth
-              label="Email Address"
+              label="邮箱"
               inputRef={loginEmail}
               autoFocus
               autoComplete="off"
@@ -112,7 +112,7 @@ function LoginDialog(props) {
               required
               fullWidth
               error={status === "invalidPassword"}
-              label="Password"
+              label="密码"
               inputRef={loginPassword}
               autoComplete="off"
               onChange={() => {
@@ -123,8 +123,9 @@ function LoginDialog(props) {
               helperText={
                 status === "invalidPassword" ? (
                   <span>
-                    Incorrect password. Try again, or click on{" "}
-                    <b>&quot;Forgot Password?&quot;</b> to reset it.
+                    错误密码,请重试,或者
+                    {" "}
+                    <b>&quot;忘记密码?&quot;</b>
                   </span>
                 ) : (
                   ""
@@ -137,12 +138,11 @@ function LoginDialog(props) {
             <FormControlLabel
               className={classes.formControlLabel}
               control={<Checkbox color="primary" />}
-              label={<Typography variant="body1">Remember me</Typography>}
+              label={<Typography variant="body1">记住我</Typography>}
             />
             {status === "verificationEmailSend" ? (
               <HighlightedInformation>
-                We have send instructions on how to reset your password to your
-                email address
+                我们向你提供的邮箱发送了使用指南,敬请查收
               </HighlightedInformation>
             ) : (
               <HighlightedInformation>
@@ -163,7 +163,7 @@ function LoginDialog(props) {
               disabled={isLoading}
               size="large"
             >
-              Login
+              登陆
               {isLoading && <ButtonCircularProgress />}
             </Button>
             <Typography
@@ -186,7 +186,7 @@ function LoginDialog(props) {
                 }
               }}
             >
-              Forgot Password?
+              忘记密码?
             </Typography>
           </Fragment>
         }

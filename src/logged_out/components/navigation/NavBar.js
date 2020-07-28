@@ -8,7 +8,8 @@ import {
   Button,
   Hidden,
   IconButton,
-  withStyles
+  withStyles,
+  SvgIcon
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
@@ -17,10 +18,19 @@ import LockOpenIcon from "@material-ui/icons/LockOpen";
 import BookIcon from "@material-ui/icons/Book";
 import NavigationDrawer from "../../../shared/components/NavigationDrawer";
 
+import HomePNG from "../../dummy_data/images/app-icon@256.png";
+import JCPlayer from "../../dummy_data/images/JCPlayer.png";
 const styles = theme => ({
   appBar: {
     boxShadow: theme.shadows[6],
     backgroundColor: theme.palette.common.white
+  },
+
+  brandIcon:{
+    height:30,
+  },
+  brandName:{
+    height:60,
   },
   toolbar: {
     display: "flex",
@@ -32,7 +42,8 @@ const styles = theme => ({
   },
   brandText: {
     fontFamily: "'Baloo Bhaijaan', cursive",
-    fontWeight: 400
+    fontWeight: 400,
+    marginBottom: 20,
   },
   noDecoration: {
     textDecoration: "none !important"
@@ -75,25 +86,12 @@ function NavBar(props) {
     <div className={classes.root}>
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
-          <div>
-            <Typography
-              variant="h4"
-              className={classes.brandText}
-              display="inline"
-              color="primary"
-            >
-              JC
-            </Typography>
-            <Typography
-              variant="h4"
-              className={classes.brandText}
-              display="inline"
-              color="secondary"
-            >
-              Player
-            </Typography>
-          </div>
-          <div>
+            <Toolbar className={classes.brandArea}>
+            <img className={classes.brandIcon } src={HomePNG} alt="JCPlayer"></img>
+
+            <img className={classes.brandName } src={JCPlayer} alt="JCPlayer"></img>
+            </Toolbar>
+            <div>
             <Hidden mdUp>
               <IconButton
                 className={classes.menuButton}
