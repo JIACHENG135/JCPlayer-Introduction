@@ -222,7 +222,7 @@ function HeadSection(props) {
                         </Box>
                     </Grid>
 
-                      <Grid item md={6}>
+                      <Grid item md={6} xs={12}>
 
                         <div className="demo-4 medium">
                           <Carousel interval="4000" type="card" height="200px">

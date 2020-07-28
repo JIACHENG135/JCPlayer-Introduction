@@ -11,6 +11,9 @@ import dummyBlogPosts from "../dummy_data/blogPosts";
 import DialogSelector from "./register_login/DialogSelector";
 import Routing from "./Routing";
 import smoothScrollTop from "../../shared/functions/smoothScrollTop";
+import {mytheme} from "./home/Home";
+import { ThemeProvider } from "@material-ui/core";
+
 
 AOS.init({ once: true });
 
@@ -118,15 +121,17 @@ function Main(props) {
         open={isCookieRulesDialogOpen}
         onClose={handleCookieRulesDialogClose}
       />
-      <NavBar
-        selectedTab={selectedTab}
-        selectTab={setSelectedTab}
-        openLoginDialog={openLoginDialog}
-        openRegisterDialog={openRegisterDialog}
-        mobileDrawerOpen={isMobileDrawerOpen}
-        handleMobileDrawerOpen={handleMobileDrawerOpen}
-        handleMobileDrawerClose={handleMobileDrawerClose}
-      />
+      <ThemeProvider theme={mytheme}>
+        <NavBar
+          selectedTab={selectedTab}
+          selectTab={setSelectedTab}
+          openLoginDialog={openLoginDialog}
+          openRegisterDialog={openRegisterDialog}
+          mobileDrawerOpen={isMobileDrawerOpen}
+          handleMobileDrawerOpen={handleMobileDrawerOpen}
+          handleMobileDrawerClose={handleMobileDrawerClose}
+        />
+      </ThemeProvider>
       <Routing
         blogPosts={blogPosts}
         selectHome={selectHome}
