@@ -22,6 +22,7 @@ import {
   about1,about2,details1,details2,search1,search2
 } from '../../dummy_data/images/';
 
+import { useTranslation, Trans, Translation } from 'react-i18next';
 
 
 const styles = theme => ({
@@ -117,6 +118,7 @@ const styles = theme => ({
 
 function HeadSection(props) {
   const { classes, theme, width } = props;
+
   const socialIcon =   {
     icon: (
       <svg
@@ -157,7 +159,7 @@ function HeadSection(props) {
                           <Typography
                             variant={isWidthUp("lg", width) ? "h3" : "h4"}
                           >
-                            JCPlayer 免费视频播放器,全网资源,一网打尽
+                            <Trans>JCPlayer 免费视频播放器,全网资源,一网打尽</Trans>
                           </Typography>
                         </Box>
                         <div>
@@ -166,7 +168,8 @@ function HeadSection(props) {
                               variant={isWidthUp("lg", width) ? "h6" : "body1"}
                               color="textSecondary"
                             >
-                              跨平台,多端同步数据,极致简约
+                              
+                              <Trans>跨平台,多端同步数据,极致简约</Trans>
                             </Typography>
                           </Box>
                         </div>
@@ -191,7 +194,7 @@ function HeadSection(props) {
                                 >
                                   {socialIcon.icon}
                                 </IconButton>
-                                Github 下载
+                                <Trans>Github 下载</Trans>
                               </Button>
                             </Grid>
                             <Grid item xs={6} >
@@ -213,7 +216,7 @@ function HeadSection(props) {
                                 >
                                 {socialIcon.icon}
                                 </IconButton>
-                                Github 下载
+                                <Trans>Github 下载</Trans>
                               </Button>
                             </Grid>
 

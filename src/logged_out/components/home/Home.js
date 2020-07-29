@@ -2,9 +2,10 @@ import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import HeadSection from "./HeadSection";
 import FeatureSection from "./FeatureSection";
-import PricingSection from "./PricingSection";
+// import PricingSection from "./PricingSection";
 import { ThemeProvider } from "@material-ui/core";
 import { createMuiTheme } from '@material-ui/core/styles';
+import { useTranslation, Trans, Translation } from 'react-i18next';
 
 
 export const mytheme = createMuiTheme({
