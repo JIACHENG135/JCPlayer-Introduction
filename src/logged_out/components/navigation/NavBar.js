@@ -4,12 +4,10 @@ import { Link } from "react-router-dom";
 import {
   AppBar,
   Toolbar,
-  Typography,
   Button,
   Hidden,
   IconButton,
   withStyles,
-  SvgIcon
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
@@ -20,6 +18,7 @@ import NavigationDrawer from "../../../shared/components/NavigationDrawer";
 
 import HomePNG from "../../dummy_data/images/app-icon@256.png";
 import JCPlayer from "../../dummy_data/images/JCPlayer.png";
+import {Trans, useTranslation} from "react-i18next";
 const styles = theme => ({
   appBar: {
     boxShadow: theme.shadows[6],
@@ -60,6 +59,14 @@ function NavBar(props) {
     mobileDrawerOpen,
     selectedTab
   } = props;
+  const {t, i18n} = useTranslation()
+  console.log("i18n is ",i18n)
+  const changeLanguageZh = () => {
+    i18n.changeLanguage('zh');
+  };
+  const changeLanguageEn = () => {
+    i18n.changeLanguage('en');
+  };
   const menuItems = [
     {
       link: "/",
@@ -80,8 +87,19 @@ function NavBar(props) {
       name: "登陆",
       onClick: openLoginDialog,
       icon: <LockOpenIcon className="text-white" />
-    }
+    },
+
   ];
+  const langs = [    
+    {
+    name: "zh",
+    onClick: changeLanguageZh
+  },
+  {
+    name: "en",
+    onClick: changeLanguageEn
+  }]
+
   return (
     <div className={classes.root}>
       <AppBar position="fixed" className={classes.appBar}>
@@ -102,6 +120,7 @@ function NavBar(props) {
               </IconButton>
             </Hidden>
             <Hidden smDown>
+              
               {menuItems.map(element => {
                 if (element.link) {
                   return (
@@ -116,11 +135,12 @@ function NavBar(props) {
                         size="large"
                         classes={{ text: classes.menuButtonText }}
                       >
-                        {element.name}
+                        <Trans>{element.name}</Trans>
                       </Button>
                     </Link>
                   );
                 }
+                
                 return (
                   <Button
                     color="secondary"
@@ -129,10 +149,23 @@ function NavBar(props) {
                     classes={{ text: classes.menuButtonText }}
                     key={element.name}
                   >
-                    {element.name}
+                    <Trans>{element.name}</Trans>
                   </Button>
                 );
               })}
+
+              {langs.map(element =>{
+                return (                  <Button
+                  color="secondary"
+                  size="large"
+                  onClick={element.onClick}
+                  classes={{ text: classes.menuButtonText }}
+                  key={element.name}
+                >
+                  <Trans>{element.name}</Trans>
+                </Button>)
+              })}
+              
             </Hidden>
           </div>
         </Toolbar>

@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment,useState } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import {
@@ -14,12 +14,13 @@ import {
   IconButton,
 } from "@material-ui/core";
 import { Carousel } from "element-react";
+import Popover from '@material-ui/core/Popover';
 // import headerImage from "../../dummy_data/images/headerImage.jpg";
 import WaveBorder from "../../../shared/components/WaveBorder";
 import 'element-theme-default';
 import './carousel.css';
 import {
-  about1,about2,details1,details2,search1,search2
+  about1,about2,details1,details2,search1,search2,cow
 } from '../../dummy_data/images/';
 
 import { useTranslation, Trans, Translation } from 'react-i18next';
@@ -34,6 +35,9 @@ const styles = theme => ({
       main: '#00bcd4',
     },
   },
+  popover: {
+    pointerEvents: 'none',
+  },
   extraLargeButtonLabel: {
     fontSize: theme.typography.body1.fontSize,
     [theme.breakpoints.up("sm")]: {
@@ -41,6 +45,7 @@ const styles = theme => ({
     }
   },
   extraLargeButton: {
+    height:50,
     paddingTop: theme.spacing(1.5),
     paddingBottom: theme.spacing(1.5),
     [theme.breakpoints.up("xs")]: {
@@ -133,8 +138,32 @@ function HeadSection(props) {
       </svg>
     ),
     label: "Github",
-    href: "https://github.com/dunky11/react-saas-template"
+    href: "https://github.com/JIACHENG135/JCPlayer/releases"
   }
+  const CowTransIcon = {
+    icon:(
+      <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" >
+        <path d="M448 768a21.333333 21.333333 0 0 1 21.333333 21.333333 21.333333 21.333333 0 0 1-21.333333 21.333334 21.333333 21.333333 0 0 1-21.333333-21.333334 21.333333 21.333333 0 0 1 21.333333-21.333333m128 0a21.333333 21.333333 0 0 1 21.333333 21.333333 21.333333 21.333333 0 0 1-21.333333 21.333334 21.333333 21.333333 0 0 1-21.333333-21.333334 21.333333 21.333333 0 0 1 21.333333-21.333333M426.666667 469.333333a42.666667 42.666667 0 0 1 42.666666 42.666667 42.666667 42.666667 0 0 1-42.666666 42.666667 42.666667 42.666667 0 0 1-42.666667-42.666667 42.666667 42.666667 0 0 1 42.666667-42.666667m170.666666 0a42.666667 42.666667 0 0 1 42.666667 42.666667 42.666667 42.666667 0 0 1-42.666667 42.666667 42.666667 42.666667 0 0 1-42.666666-42.666667 42.666667 42.666667 0 0 1 42.666666-42.666667m170.666667 298.666667c0 94.293333-114.773333 170.666667-256 170.666667s-256-76.373333-256-170.666667c0-38.4 19.2-73.813333 51.2-102.4-32-42.666667-51.2-96-51.2-153.6l5.12-52.053333c-23.04 6.4-50.773333 6.4-73.386667 0-43.52-11.946667-109.226667-61.013333-99.413333-95.146667 9.813333-34.133333 91.306667-40.533333 134.826667-27.733333 25.173333 7.253333 52.053333 25.6 67.84 45.226666l24.32-34.56C289.706667 300.8 298.666667 170.666667 426.666667 128l-3.84 5.973333c-11.946667 18.773333-42.666667 78.08-10.24 142.08a256.853333 256.853333 0 0 1 198.826666 0c32.426667-64 1.706667-123.306667-10.24-142.08L597.333333 128c128 42.666667 136.96 172.8 111.36 219.733333l24.32 34.56c15.786667-19.626667 42.666667-37.973333 67.84-45.226666 43.52-12.8 125.013333-6.4 134.826667 27.733333 9.813333 34.133333-55.893333 83.2-99.413333 95.146667-22.613333 6.4-50.346667 6.4-73.386667 0L768 512c0 57.6-19.2 110.933333-51.2 153.6 32 28.586667 51.2 64 51.2 102.4m-256-85.333333c-94.293333 0-170.666667 38.4-170.666667 85.333333s76.373333 85.333333 170.666667 85.333333 170.666667-38.4 170.666667-85.333333-76.373333-85.333333-170.666667-85.333333m0-85.333334c47.786667 0 92.586667 8.96 130.986667 23.893334 24.746667-29.44 39.68-66.56 39.68-109.226667a170.666667 170.666667 0 0 0-170.666667-170.666667 170.666667 170.666667 0 0 0-170.666667 170.666667c0 42.666667 14.933333 79.786667 39.68 109.226667 38.4-14.933333 83.2-23.893333 130.986667-23.893334m89.173333-463.36z" fill="" p-id="1449">
+          </path>
+      </svg>
+    ),
+    label:"奶牛快传",
+    href:"https://cowtransfer.com/s/e22e212612d240"
+    
+  }
+  const {i18n} = useTranslation();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const handlePopoverOpen = (event) => {
+    console.log("You are hovering me")
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handlePopoverClose = () => {
+    setAnchorEl(null);
+  };
+  const open = Boolean(anchorEl);
+  const images = [about1,about2,search1,search2,details1,details2,about1,about2,search1,search2,details1,details2];
+  const [activate,setActivate] = useState(0);
   return (
 
       <Fragment>
@@ -174,13 +203,11 @@ function HeadSection(props) {
                           </Box>
                         </div>
                         <div>
-                          <Grid container  spacing={3} justify="space-evenly" >
+                          <Grid container  spacing={3} justify="flex-start" >
                             <Grid item xs={6}  >
                               <Button
                                 variant="contained"
                                 color="secondary"
-                                sizeSmall
-                                iconSizeLarge
                                 // fullWidth
                                 className={classes.extraLargeButton}
                                 classes={{ label: classes.extraLargeButtonLabel }}
@@ -201,22 +228,20 @@ function HeadSection(props) {
                               <Button
                                 variant="contained"
                                 color="secondary"
-                                sizeSmall
-                                iconSizeLarge
                                 // fullWidth
                                 className={classes.extraLargeButton}
                                 classes={{ label: classes.extraLargeButtonLabel }}
-                                href="https://github.com/dunky11/react-saas-template"
+                                href="https://cowtransfer.com/s/e22e212612d240"
                               >
                                 <IconButton
-                                aria-label={socialIcon.label}
+                                aria-label={CowTransIcon.label}
                                 className={classes.socialIcon}
-                                href={socialIcon.href}
+                                href={CowTransIcon.href}
                                 size="medium"
                                 >
-                                {socialIcon.icon}
+                                <img src={cow} width={30} alt="CowTransfer"></img>
                                 </IconButton>
-                                <Trans>Github 下载</Trans>
+                                <Trans>奶牛快传</Trans>
                               </Button>
                             </Grid>
 
@@ -228,16 +253,59 @@ function HeadSection(props) {
                       <Grid item md={6} xs={12}>
 
                         <div className="demo-4 medium">
-                          <Carousel interval="4000" type="card" height="200px">
+                          <Carousel 
+                          interval="4000" 
+                          type="card" 
+                          height="200px"
+                          onChange={(ind1,ind2) => {
+                            setActivate(ind1)
+                          }}
+                          autoplay={false}
+                          >
                             {
                               [about1,about2,search1,search2,details1,details2].map((item, index) => {
                                 return (
                                   <Carousel.Item key={index}>
-                                    <img
-                                      src={item}
-                                      className={classes.image}
-                                      alt="header example"
-                                    />
+                                      <div>
+                                        <Typography
+                                          aria-owns={open ? 'mouse-over-popover' : undefined}
+                                          aria-haspopup="true"
+                                          onMouseEnter={handlePopoverOpen}
+                                          onMouseLeave={handlePopoverClose}
+                                        >
+                                          <img
+                                            src={item}
+                                            className={classes.image}
+                                            alt="header example"
+                                          />
+                                        </Typography>
+                                        <Popover
+                                          id="mouse-over-popover"
+                                          className={classes.popover}
+                                          classes={{
+                                            paper: classes.paper,
+                                          }}
+                                          open={open}
+                                          anchorEl={anchorEl}
+                                          anchorOrigin={{
+                                            vertical: 'bottom',
+                                            horizontal: 'left',
+                                          }}
+                                          transformOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'left',
+                                          }}
+                                          onClose={handlePopoverClose}
+                                          disableRestoreFocus
+                                        >
+                                          {/* <span>You are hovering{activate}</span> */}
+                                        <img
+                                          src={images[activate]}
+                                          className={classes.image}
+                                          alt="header example"
+                                        />
+                                      </Popover>
+                                    </div>
                                   </Carousel.Item>
                                 )
                               })

@@ -5,7 +5,6 @@ import FeatureSection from "./FeatureSection";
 // import PricingSection from "./PricingSection";
 import { ThemeProvider } from "@material-ui/core";
 import { createMuiTheme } from '@material-ui/core/styles';
-import { useTranslation, Trans, Translation } from 'react-i18next';
 
 
 export const mytheme = createMuiTheme({

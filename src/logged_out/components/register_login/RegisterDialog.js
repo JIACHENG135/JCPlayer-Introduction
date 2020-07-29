@@ -13,7 +13,7 @@ import FormDialog from "../../../shared/components/FormDialog";
 import HighlightedInformation from "../../../shared/components/HighlightedInformation";
 import ButtonCircularProgress from "../../../shared/components/ButtonCircularProgress";
 import VisibilityPasswordTextField from "../../../shared/components/VisibilityPasswordTextField";
-
+import {Trans,useTranslation} from "react-i18next";
 const styles = (theme) => ({
   link: {
     transition: theme.transitions.create(["background-color"], {
@@ -31,6 +31,7 @@ const styles = (theme) => ({
   },
 });
 
+
 function RegisterDialog(props) {
   const { setStatus, theme, onClose, openTermsDialog, status, classes } = props;
   const [isLoading, setIsLoading] = useState(false);
@@ -39,7 +40,7 @@ function RegisterDialog(props) {
   const registerTermsCheckbox = useRef();
   const registerPassword = useRef();
   const registerPasswordRepeat = useRef();
-
+  const {t,i18n} = useTranslation();
   const register = useCallback(() => {
     if (!registerTermsCheckbox.current.checked) {
       setHasTermsOfServiceError(true);
@@ -70,7 +71,7 @@ function RegisterDialog(props) {
       loading={isLoading}
       onClose={onClose}
       open
-      headline="注册"
+      headline={t("注册")}
       onFormSubmit={(e) => {
         e.preventDefault();
         register();
@@ -85,7 +86,7 @@ function RegisterDialog(props) {
             required
             fullWidth
             error={status === "invalidEmail"}
-            label="邮件"
+            label={t("邮件")}
             autoFocus
             autoComplete="off"
             type="email"
@@ -104,7 +105,7 @@ function RegisterDialog(props) {
             error={
               status === "passwordTooShort" || status === "passwordsDontMatch"
             }
-            label="密码"
+            label={t("密码")}
             inputRef={registerPassword}
             autoComplete="off"
             onChange={() => {
@@ -136,7 +137,7 @@ function RegisterDialog(props) {
             error={
               status === "passwordTooShort" || status === "passwordsDontMatch"
             }
-            label="重复密码"
+            label={t("重复密码")}
             inputRef={registerPasswordRepeat}
             autoComplete="off"
             onChange={() => {
@@ -172,7 +173,7 @@ function RegisterDialog(props) {
             }
             label={
               <Typography variant="body1">
-                我同意
+                {t("我同意")}
                 <span
                   className={classes.link}
                   onClick={isLoading ? null : openTermsDialog}
@@ -189,7 +190,7 @@ function RegisterDialog(props) {
                   }}
                 >
                   {" "}
-                  用户使用协议
+                  {t("用户使用协议")}
                 </span>
               </Typography>
             }
@@ -202,16 +203,18 @@ function RegisterDialog(props) {
                 marginTop: theme.spacing(-1),
               }}
             >
-              你必须同意用户使用协议,才能成功注册
+              {t("你必须同意用户使用协议,才能成功注册")}
             </FormHelperText>
           )}
           {status === "accountCreated" ? (
             <HighlightedInformation>
-              已成功创建账户,登陆前请点击我们发送给你的邮件里的链接以确认注册
+              {t("已成功创建账户,登陆前请点击我们发送给你的邮件里的链接以确认注册")}
+              
             </HighlightedInformation>
           ) : (
             <HighlightedInformation>
-              注册功能正在开发中,敬请期待
+              {t("注册功能正在开发中,敬请期待")}
+              
             </HighlightedInformation>
           )}
         </Fragment>
@@ -225,7 +228,7 @@ function RegisterDialog(props) {
           color="secondary"
           disabled={isLoading}
         >
-          注册
+          <Trans>注册</Trans>
           {isLoading && <ButtonCircularProgress />}
         </Button>
       }

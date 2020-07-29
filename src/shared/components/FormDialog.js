@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Dialog, DialogContent, Box, withStyles } from "@material-ui/core";
 import DialogTitleWithCloseIcon from "./DialogTitleWithCloseIcon";
-
+import {Trans} from "react-i18next";
 const styles = theme => ({
   dialogPaper: {
     display: "flex",
@@ -58,7 +58,7 @@ function FormDialog(props) {
       />
       <DialogContent className={classes.dialogContent}>
         <form onSubmit={onFormSubmit}>
-          <div>{content}</div>
+          <div><Trans>{content}</Trans></div>
           <Box width="100%" className={classes.actions}>
             {actions}
           </Box>

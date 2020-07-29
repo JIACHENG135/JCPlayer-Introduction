@@ -8,6 +8,7 @@ import {
   withTheme
 } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
+import {Trans,useTranslation} from "react-i18next";
 
 function DialogTitleWithCloseIcon(props) {
   const {
@@ -18,6 +19,7 @@ function DialogTitleWithCloseIcon(props) {
     title,
     disablePadding
   } = props;
+  const {t ,i18n} = useTranslation();
   return (
     <DialogTitle
       style={{
@@ -34,7 +36,7 @@ function DialogTitleWithCloseIcon(props) {
       disableTypography
     >
       <Box display="flex" justifyContent="space-between">
-        <Typography variant="h5">{title}</Typography>
+        <Typography variant="h5"><Trans>{t(title)}</Trans></Typography>
         <IconButton
           onClick={onClose}
           style={{ marginRight: -12, marginTop: -10 }}

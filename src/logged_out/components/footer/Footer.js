@@ -16,6 +16,7 @@ import MailIcon from "@material-ui/icons/Mail";
 import WaveBorder from "../../../shared/components/WaveBorder";
 import transitions from "@material-ui/core/styles/transitions";
 import ColoredButton from "../../../shared/components/ColoredButton";
+import {Trans, useTranslation} from 'react-i18next';
 
 const styles = theme => ({
   footerInner: {
@@ -155,6 +156,7 @@ const socialIcons = [
 
 function Footer(props) {
   const { classes, theme, width } = props;
+  const {i18n} = useTranslation();
   return (
     <footer className="lg-p-top">
       <WaveBorder
@@ -168,6 +170,7 @@ function Footer(props) {
             <form>
               <Box display="flex" flexDirection="column">
                 <Box mb={1}>
+                  <Trans>
                   <TextField
                     variant="outlined"
                     multiline
@@ -180,13 +183,14 @@ function Footer(props) {
                     fullWidth
                     required
                   />
+                  </Trans>
                 </Box>
                 <ColoredButton
                   color={theme.palette.common.white}
                   variant="outlined"
                   type="submit"
                 >
-                  发送消息
+                  <Trans>发送消息</Trans>
                 </ColoredButton>
               </Box>
             </form>
@@ -223,7 +227,7 @@ function Footer(props) {
           </Hidden>
           <Grid item xs={12} md={6} lg={4}>
             <Typography variant="h6" paragraph className="text-white">
-              关于作者
+              <Trans>关于作者</Trans>
             </Typography>
             <Typography style={{ color: "#8f9296" }} paragraph>
               FastAPI, MIT 6.824, Electron and React

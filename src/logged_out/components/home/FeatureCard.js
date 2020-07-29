@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { Typography, withStyles } from "@material-ui/core";
-
+import { useTranslation, Trans, Translation } from 'react-i18next';
 const styles = theme => ({
   iconWrapper: {
     borderRadius: theme.shape.borderRadius,
@@ -38,6 +38,7 @@ function shadeColor(hex, percent) {
 
 function FeatureCard(props) {
   const { classes, Icon, color, headline, text } = props;
+  const {i18n} = useTranslation()
   return (
     <Fragment>
       <div
@@ -52,10 +53,10 @@ function FeatureCard(props) {
         {Icon}
       </div>
       <Typography variant="h5" paragraph>
-        {headline}
+        <Trans>{headline}</Trans>
       </Typography>
       <Typography variant="body1" color="textSecondary">
-        {text}
+        <Trans>{text}</Trans>
       </Typography>
     </Fragment>
   );

@@ -14,6 +14,7 @@ import FormDialog from "../../../shared/components/FormDialog";
 import HighlightedInformation from "../../../shared/components/HighlightedInformation";
 import ButtonCircularProgress from "../../../shared/components/ButtonCircularProgress";
 import VisibilityPasswordTextField from "../../../shared/components/VisibilityPasswordTextField";
+import {useTranslation} from "react-i18next";
 
 const styles = (theme) => ({
   forgotPassword: {
@@ -49,7 +50,7 @@ function LoginDialog(props) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const loginEmail = useRef();
   const loginPassword = useRef();
-
+  const {t,i18n} = useTranslation();
   const login = useCallback(() => {
     setIsLoading(true);
     setStatus(null);
@@ -81,7 +82,7 @@ function LoginDialog(props) {
           login();
         }}
         hideBackdrop
-        headline="登陆"
+        headline={t("登陆")}
         content={
           <Fragment>
             <TextField
@@ -90,7 +91,7 @@ function LoginDialog(props) {
               error={status === "invalidEmail"}
               required
               fullWidth
-              label="邮箱"
+              label={t("邮箱")}
               inputRef={loginEmail}
               autoFocus
               autoComplete="off"
@@ -102,7 +103,7 @@ function LoginDialog(props) {
               }}
               helperText={
                 status === "invalidEmail" &&
-                "This email address isn't associated with an account."
+                ""
               }
               FormHelperTextProps={{ error: true }}
             />
@@ -112,7 +113,7 @@ function LoginDialog(props) {
               required
               fullWidth
               error={status === "invalidPassword"}
-              label="密码"
+              label={t("密码")}
               inputRef={loginPassword}
               autoComplete="off"
               onChange={() => {
@@ -123,12 +124,12 @@ function LoginDialog(props) {
               helperText={
                 status === "invalidPassword" ? (
                   <span>
-                    错误密码,请重试,或者
+                    {t("错误密码,请重试,或者")}
                     {" "}
-                    <b>&quot;忘记密码?&quot;</b>
+                <b>&quot;{t("忘记密码")}?&quot;</b>
                   </span>
                 ) : (
-                  ""
+                  t("这个邮箱地址没有与之关联的账户")
                 )
               }
               FormHelperTextProps={{ error: true }}
@@ -138,11 +139,11 @@ function LoginDialog(props) {
             <FormControlLabel
               className={classes.formControlLabel}
               control={<Checkbox color="primary" />}
-              label={<Typography variant="body1">记住我</Typography>}
+            label={<Typography variant="body1">{t("记住我")}</Typography>}
             />
             {status === "verificationEmailSend" ? (
               <HighlightedInformation>
-                我们向你提供的邮箱发送了使用指南,敬请查收
+                {t("我们向你提供的邮箱发送了使用指南,敬请查收")}
               </HighlightedInformation>
             ) : (
               <HighlightedInformation>
@@ -163,7 +164,7 @@ function LoginDialog(props) {
               disabled={isLoading}
               size="large"
             >
-              登陆
+              {t("登陆")}
               {isLoading && <ButtonCircularProgress />}
             </Button>
             <Typography
@@ -186,7 +187,7 @@ function LoginDialog(props) {
                 }
               }}
             >
-              忘记密码?
+              {t("忘记密码")}?
             </Typography>
           </Fragment>
         }
