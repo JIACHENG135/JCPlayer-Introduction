@@ -47,6 +47,7 @@ i18n
           "记住我":"Remeber me",
           "我们向你提供的邮箱发送了使用指南,敬请查收":"We have sent a user guide to the email address you provided, please check",
           "这个邮箱地址没有与之关联的账户":"This email address isn't associated with an account.",
+          "奶牛快传":"CowTrans",
 
         }
       },

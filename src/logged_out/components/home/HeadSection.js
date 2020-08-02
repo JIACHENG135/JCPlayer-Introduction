@@ -148,7 +148,7 @@ function HeadSection(props) {
       </svg>
     ),
     label:"奶牛快传",
-    href:"https://cowtransfer.com/s/e22e212612d240"
+    href:"https://cowtransfer.com/s/c571c415563c4a"
     
   }
   const {i18n} = useTranslation();
@@ -221,7 +221,7 @@ function HeadSection(props) {
                                 >
                                   {socialIcon.icon}
                                 </IconButton>
-                                <Trans>Github 下载</Trans>
+                                <Trans>Github</Trans>
                               </Button>
                             </Grid>
                             <Grid item xs={6} >
@@ -231,7 +231,7 @@ function HeadSection(props) {
                                 // fullWidth
                                 className={classes.extraLargeButton}
                                 classes={{ label: classes.extraLargeButtonLabel }}
-                                href="https://cowtransfer.com/s/e22e212612d240"
+                                href="https://cowtransfer.com/s/c571c415563c4a"
                               >
                                 <IconButton
                                 aria-label={CowTransIcon.label}
